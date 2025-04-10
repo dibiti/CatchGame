@@ -1,0 +1,17 @@
+# Virtual environment
+venv/
+
+# Temporary files
+__pycache__/
+*.py[cod]
+*.log
+
+# VSCode
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Others
+.env
