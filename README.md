@@ -31,13 +31,13 @@ pip install -r requirements.txt
 
 4. Run the game:
 ```bash
-python jogo_base.py
+python game_base.py
 ```
 
 ## 📌 Roadmap (Milestones)
 
 - [x] Base version with lateral movement
-- [ ] Add falling object
+- [x] Add falling object
 - [ ] Detect collision
 - [ ] Point counter
 - [ ] Add images/sprites
