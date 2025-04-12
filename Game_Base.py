@@ -51,14 +51,25 @@ while running:
     #Move falling object
     object_y += object_speed
 
+    #Rects for collision detection
+    player_rect = pygame.Rect(player_x, player_y, player_width, player_height)
+    object_rect = pygame.Rect(object_x, object_y, object_width, object_height)
+
+    #Collision check
+    if player_rect.colliderect(object_rect):
+        print("Collision detected")
+        # Reset object
+        object_y = 0
+        object_x = random.randint(0, WIDTH - object_width)
+
     #Reset object when it goes off-screen
     if object_y > HEIGHT:
         object_y = 0
         object_x = random.randint(0, WIDTH - object_width)
 
     # Draw the player
-    pygame.draw.rect(screen, BLUE, (player_x, player_y, player_width, player_height))
-    pygame.draw.rect(screen, RED, (object_x, object_y, object_width, object_height))
+    pygame.draw.rect(screen, BLUE, player_rect)
+    pygame.draw.rect(screen, RED, object_rect)
 
     # Refresh the screen
     pygame.display.flip()
