@@ -39,7 +39,7 @@ python game_base.py
 - [x] Base version with lateral movement
 - [x] Add falling object
 - [x] Detect collision
-- [ ] Point counter
+- [x] Point counter
 - [ ] Add images/sprites
 - [ ] Sounds
 - [ ] Difficulty levels

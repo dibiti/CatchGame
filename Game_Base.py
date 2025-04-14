@@ -13,6 +13,10 @@ pygame.display.set_caption("Catch the Falling Object")
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
+BLACK = (0, 0, 0)
+
+# Fonts
+font = pygame.font.SysFont(None, 36)
 
 # Player setup
 player_width = 100
@@ -27,6 +31,9 @@ object_height = 30
 object_x = random.randint(0, WIDTH - object_width)
 object_y = 0
 object_speed = 5
+
+#Score
+score = 0
 
 # Clock
 clock = pygame.time.Clock()
@@ -57,8 +64,9 @@ while running:
 
     #Collision check
     if player_rect.colliderect(object_rect):
-        print("Collision detected")
+        #print("Collision detected")
         # Reset object
+        score += 1
         object_y = 0
         object_x = random.randint(0, WIDTH - object_width)
 
@@ -70,6 +78,10 @@ while running:
     # Draw the player
     pygame.draw.rect(screen, BLUE, player_rect)
     pygame.draw.rect(screen, RED, object_rect)
+
+    # Draw score
+    score_text = font.render(f"Score: {score}", True, BLACK)
+    screen.blit(score_text, (10, 10))
 
     # Refresh the screen
     pygame.display.flip()
