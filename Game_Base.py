@@ -11,24 +11,32 @@ pygame.display.set_caption("Catch the Falling Object")
 
 # Colors
 WHITE = (255, 255, 255)
-BLUE = (0, 0, 255)
-RED = (255, 0, 0)
+#BLUE = (0, 0, 255)
+#RED = (255, 0, 0)
 BLACK = (0, 0, 0)
 
 # Fonts
 font = pygame.font.SysFont(None, 36)
 
+# Load images
+player_img = pygame.image.load("DancerRedDress.png")
+object_img = pygame.image.load("Rose.png")
+
+# Resize images (optional)
+player_img = pygame.transform.scale(player_img, (100, 100))
+object_img = pygame.transform.scale(object_img, (30, 30))
+
 # Player setup
-player_width = 100
-player_height = 20
-player_x = WIDTH // 2 - player_width // 2
-player_y = HEIGHT - 40
+#player_width = 100
+#player_height = 20
+player_x = WIDTH // 2 - 50
+player_y = HEIGHT - 100
 player_speed = 5
 
 #Falling object setup
-object_width = 30
-object_height = 30
-object_x = random.randint(0, WIDTH - object_width)
+#object_width = 30
+#object_height = 30
+object_x = random.randint(0, WIDTH - 30)
 object_y = 0
 object_speed = 5
 
@@ -59,8 +67,8 @@ while running:
     object_y += object_speed
 
     #Rects for collision detection
-    player_rect = pygame.Rect(player_x, player_y, player_width, player_height)
-    object_rect = pygame.Rect(object_x, object_y, object_width, object_height)
+    player_rect = player_img.get_rect(topleft=(player_x, player_y))
+    object_rect = object_img.get_rect(topleft=(object_x, object_y))
 
     #Collision check
     if player_rect.colliderect(object_rect):
@@ -68,16 +76,16 @@ while running:
         # Reset object
         score += 1
         object_y = 0
-        object_x = random.randint(0, WIDTH - object_width)
+        object_x = random.randint(0, WIDTH - 30)
 
     #Reset object when it goes off-screen
     if object_y > HEIGHT:
         object_y = 0
-        object_x = random.randint(0, WIDTH - object_width)
+        object_x = random.randint(0, WIDTH - 30)
 
     # Draw the player
-    pygame.draw.rect(screen, BLUE, player_rect)
-    pygame.draw.rect(screen, RED, object_rect)
+    screen.blit(player_img, (player_x, player_y))
+    screen.blit(object_img, (object_x, object_y))
 
     # Draw score
     score_text = font.render(f"Score: {score}", True, BLACK)
