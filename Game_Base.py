@@ -1,8 +1,12 @@
 import pygame
 import random
 
-# Initialize pygame
+# Initialize pygame and mixer
 pygame.init()
+pygame.mixer.init()
+
+#Load sound
+catch_sound = pygame.mixer.Sound("catch.wav")
 
 # Screen dimensions
 WIDTH, HEIGHT = 800, 600
@@ -75,6 +79,7 @@ while running:
         #print("Collision detected")
         # Reset object
         score += 1
+        catch_sound.play()  # play the sound
         object_y = 0
         object_x = random.randint(0, WIDTH - 30)
 

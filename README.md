@@ -41,7 +41,7 @@ python game_base.py
 - [x] Detect collision
 - [x] Point counter
 - [x] Add images/sprites
-- [ ] Sounds
+- [x] Sounds
 - [ ] Difficulty levels
 - [ ] Lives or time limit
 
