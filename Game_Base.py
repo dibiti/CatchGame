@@ -46,6 +46,7 @@ object_speed = 5
 
 #Score
 score = 0
+last_checkpoint = 0  # to control difficulty increase
 
 # Clock
 clock = pygame.time.Clock()
@@ -80,6 +81,11 @@ while running:
         # Reset object
         score += 1
         catch_sound.play()  # play the sound
+
+        if score % 5 == 0 and score != last_checkpoint:
+            object_speed += 1
+            last_checkpoint = score
+
         object_y = 0
         object_x = random.randint(0, WIDTH - 30)
 

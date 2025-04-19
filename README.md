@@ -42,7 +42,7 @@ python game_base.py
 - [x] Point counter
 - [x] Add images/sprites
 - [x] Sounds
-- [ ] Difficulty levels
+- [x] Difficulty levels
 - [ ] Lives or time limit
 
 ## 🧠 Learnings
