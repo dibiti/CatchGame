@@ -43,7 +43,7 @@ python game_base.py
 - [x] Add images/sprites
 - [x] Sounds
 - [x] Difficulty levels
-- [ ] Lives or time limit
+- [x] Lives or time limit
 
 ## 🧠 Learnings
 

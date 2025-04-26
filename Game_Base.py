@@ -6,7 +6,7 @@ pygame.init()
 pygame.mixer.init()
 
 #Load sound
-catch_sound = pygame.mixer.Sound("catch.wav")
+catch_sound = pygame.mixer.Sound("bubble-pop.wav")
 
 # Screen dimensions
 WIDTH, HEIGHT = 800, 600
@@ -50,6 +50,8 @@ last_checkpoint = 0  # to control difficulty increase
 
 # Clock
 clock = pygame.time.Clock()
+time_limit = 60  # 60 segundos de jogo
+start_ticks = pygame.time.get_ticks()  # marca o tempo de início
 
 # Main loop
 running = True
@@ -101,6 +103,18 @@ while running:
     # Draw score
     score_text = font.render(f"Score: {score}", True, BLACK)
     screen.blit(score_text, (10, 10))
+
+    # Calculate remaining time
+    seconds = (pygame.time.get_ticks() - start_ticks) // 1000
+    remaining_time = time_limit - seconds
+
+    # Game ends if time runs out
+    if remaining_time <= 0:
+        running = False
+
+    # Draw remaining time
+    time_text = font.render(f"Time: {remaining_time}s", True, BLACK)
+    screen.blit(time_text, (WIDTH - 120, 40))
 
     # Refresh the screen
     pygame.display.flip()
